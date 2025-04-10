@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Samuel Keon Linnemann</title>
+
+        <link rel="stylesheet" href="style.css">
+        <script src="spoon.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="main">
+            <div id="header">
+                <h1>MealMatch</h1>
+            </div>
+            <div id="preferencePage" class="page">
+                <label id="cuisineToggleLabel" class="option">
+                    Cuisine Preference
+                    <input type="checkbox" id="cuisineToggle" class="toggle">
+                    <span class="chevron"></span>
+                </label>
+                <div id="cusisineOptions" class="cuisine-Dropdown" style="display: none;">
+                    <button id="Asian" class="cuisineOption" data-selected="false" onclick="cuisineSelect('Asian')">Asian</button>
+                    <button id="American" class="cuisineOption" data-selected="false" onclick= "cuisineSelect('American')">American</button>
+                    <button id="European" class="cuisineOption" data-selected="false" onclick="cuisineSelect('European')">European</button>
+                    <button id="Italian" class="cuisineOption" data-selected="false" onclick="cuisineSelect('Italian')">Italian</button>
+                    <button id="Mexican" class="cuisineOption" data-selected="false" onclick="cuisineSelect('Mexican')">Mexican</button>
+                    <button id="Southern" class="cuisineOption" data-selected="false" onclick="cuisineSelect('Southern')">Southern</button>
+                </div>
+
+                <label id="dietaryToggleLabel" class="option">
+                    Dietary Preference
+                    <input type="checkbox" id="dietaryToggle" class="toggle">
+                    <span class="chevron"></span>
+                </label>
+                <div id="dietaryOptions" class="dietary-Dropdown" style="display: none;">
+                    <button id="vegetarian" class="optionSelect" data-selected="false">Vegetarian</button>
+                    <button id="vegan" class="optionSelect" data-selected="false">Vegan</button>
+                    <button id="Pescetarian" class="optionSelect" data-selected="false">Pescetarian</button>
+                    <button id="Paleo" class="optionSelect" data-selected="false">Paleo</button>
+                </div>
+
+                <label id="intolerancesToggleLabel" class="option">
+                    Intolerances
+                    <input type="checkbox" id="intolerancesToggle" class="toggle">
+                    <span class="chevron"></span>
+                </label>
+                <div id="intolerancesOptions" class="intolerances-Dropdown" style="display: none;">
+                    <button id="dairy" class="optionSelect" data-selected="false">Dairy</button>
+                    <button id="peanut" class="optionSelect" data-selected="false">Peanut</button>
+                    <button id="gluten" class="optionSelect" data-selected="false">Gluten</button>
+                    <button id="wheat" class="optionSelect" data-selected="false">Wheat</button>
+                    <button id="soy" class="optionSelect" data-selected="false">Soy</button>
+                    <button id="egg" class="optionSelect" data-selected="false">Egg</button>
+                </div>
+
+                <label id="typeToggleLabel" class="option">
+                    Meal Type
+                    <input type="checkbox" id="typeToggle" class="toggle">
+                    <span class="chevron"></span>
+                </label>
+                <div id="typeOptions" class="type-Dropdown" style="display: none;">
+                    <button id="breakfast" class="optionSelect" data-selected="false">Breakfast</button>
+                    <button id="mainCourse" class="optionSelect" data-selected="false">Main Course</button>
+                    <button id="sideDish" class="optionSelect" data-selected="false">Side Dish</button>
+                    <button id="dessert" class="optionSelect" data-selected="false">Dessert</button>
+                    <button id="appetizer" class="optionSelect" data-selected="false">Appetizer</button>
+                    <button id="soup" class="optionSelect" data-selected="false">Soup</button>
+                </div>  
+
+                <div id="servingSize">
+                    <div id="servingSizeInput">
+                        <h2>Min Serving Size</h2>
+                        <input type="text" id="minServingSize" class="textInput">
+                    </div>
+                    <div id="servingSizeInput">  
+                        <h2>Max Serving Size</h2>
+                        <input type="text" id="maxServingSize" class="textInput">
+                    </div>
+                </div>
+
+                <div id="calorieCount">
+                    <div id="calorieInput">
+                        <h2>Min Calorie Count</h2>
+                        <input type="text" id="minCalorie" class="textInput">
+                    </div>
+                    <div id="calorieInput">  
+                        <h2>Max Calorie Count</h2>
+                        <input type="text" id="maxCalorie" class="textInput">
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+            <div id="suggestionPage" class="page">
+
+            </div>
+        </div>
+
+        <div id="pageSelect" class="pageSelection">
+            <button id="preferencePageButton" class="pageSelectButton"><img src="assets/bitmap.png"/></button>
+            <button id="suggestionPageButton" class="pageSelectButton"><img src="assets/cookIcon.png"></button>
+            <button id="profilePageButton" class="pageSelectButton"><img src="assets/profileIcon.png"></button>
+        </div>
+    </body>
+</html>
