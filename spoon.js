@@ -1,384 +1,25 @@
-console.log("dgsdgdsg");
-//dietary, intolerances, maxcalories(a field you type in)
-
+// Global query parameters object
 let queryParams = {
     cuisine: '',
-    diet: '',
-    intolerances: '',
+    diet: '',          // Comma-separated string for dietary selections
+    intolerances: '',  // Comma-separated string for intolerance selections
     type: '',
     maxCalories: '',
     minCalories: '',
     minServings: '',
     maxServings: '',
-};
-
-//CUISINE APIS!!!!!!!!
-document.getElementById("mexicanButton").addEventListener("click", function() {
-    
-    if(queryParams.cuisine === "Mexican"){
-
-        queryParams.cuisine = "";
-        console.log("Removed Mexican Cuisine");
-
-    }else{
-        queryParams.cuisine = "Mexican";
-        console.log("Added Mexican Cuisine");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("italianButton").addEventListener("click", function() {
-    if(queryParams.cuisine === "Italian"){
-
-        queryParams.cuisine = "";
-        console.log("Removed Italian Cuisine");
-    }else{
-        queryParams.cuisine = "Italian";
-        console.log("Added Italian Cuisine");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("asianButton").addEventListener("click", function() {
-    if(queryParams.cuisine === "Asian"){
-
-        queryParams.cuisine = "";
-        console.log("Removed Asian Cuisine");
-    }else{
-        queryParams.cuisine = "Asian";
-        console.log("Added Asian Cuisine");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("americanButton").addEventListener("click", function() {
-    if(queryParams.cuisine === "American"){
-
-        queryParams.cuisine = "";
-        console.log("Removed American Cuisine");
-    }else{
-        queryParams.cuisine = "American";
-        console.log("Added American Cuisine");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("europeanButton").addEventListener("click", function() {
-    if(queryParams.cuisine === "European"){
-
-        queryParams.cuisine = "";
-        console.log("Removed European Cuisine");
-    }else{
-        queryParams.cuisine = "European";
-        console.log("Added European Cuisine");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("southernButton").addEventListener("click", function() {
-    if(queryParams.cuisine === "Southern"){
-
-        queryParams.cuisine = "";
-        console.log("Removed Southern Cuisine");
-    }else{
-        queryParams.cuisine = "Southern";
-        console.log("Added Southern Cuisine");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-
-
-//DIETARY APIS!!!!!!!!
-document.getElementById("vegetarianButton").addEventListener("click", function () {
-    if (queryParams.diet.includes("Vegetarian")) {
-        queryParams.diet = queryParams.diet.replace("Vegetarian", "").replace(/,,/g, ",").trim();
-        if (queryParams.diet.endsWith(",")) queryParams.diet = queryParams.diet.slice(0, -1);
-        console.log("Removed Vegetarian Diet");
-    } else {
-        queryParams.diet += (queryParams.diet ? "," : "") + "Vegetarian";
-        console.log("Added Vegetarian Diet");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("veganButton").addEventListener("click", function () {
-    if (queryParams.diet.includes("Vegan")) {
-        queryParams.diet = queryParams.diet.replace("Vegan", "").replace(/,,/g, ",").trim();
-        if (queryParams.diet.endsWith(",")) queryParams.diet = queryParams.diet.slice(0, -1);
-        console.log("Removed Vegan Diet");
-    } else {
-        queryParams.diet += (queryParams.diet ? "," : "") + "Vegan";
-        console.log("Added Vegan Diet");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("pescButton").addEventListener("click", function () {
-    if (queryParams.diet.includes("Pescatarian")) {
-        queryParams.diet = queryParams.diet.replace("Pescatarian", "").replace(/,,/g, ",").trim();
-        if (queryParams.diet.endsWith(",")) queryParams.diet = queryParams.diet.slice(0, -1);
-        console.log("Removed Pescatarian Diet");
-    } else {
-        queryParams.diet += (queryParams.diet ? "," : "") + "Pescatarian";
-        console.log("Added Pescatarian Diet");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("paleoButton").addEventListener("click", function () {
-    if (queryParams.diet.includes("Keto")) {
-        queryParams.diet = queryParams.diet.replace("Paleo", "").replace(/,,/g, ",").trim();
-        if (queryParams.diet.endsWith(",")) queryParams.diet = queryParams.diet.slice(0, -1);
-        console.log("Removed Paleo Diet");
-    } else {
-        queryParams.diet += (queryParams.diet ? "," : "") + "Paleo";
-        console.log("Added Paleo Diet");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-
-
-//INTOLERANCES APIS!!!!!!!!
-document.getElementById("glutenButton").addEventListener("click", function(){
-    if(queryParams.intolerances.includes("Gluten")){
-        queryParams.intolerances = queryParams.intolerances.replace("Gluten", "").replace(/,,/g, ",").trim();
-        if (queryParams.intolerances.endsWith(",")) queryParams.intolerances = queryParams.intolerances.slice(0, -1);
-        console.log("Removed Gluten Intolerance");
-
-    }else{
-
-        queryParams.intolerances += (queryParams.intolerances ? "," : "") + "Gluten";
-        console.log("Added Gluten Intolerance");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-document.getElementById("dairyButton").addEventListener("click", function(){
-    if(queryParams.intolerances.includes("Dairy")){
-        queryParams.intolerances = queryParams.intolerances.replace("Dairy", "").replace(/,,/g, ",").trim();
-        if (queryParams.intolerances.endsWith(",")) queryParams.intolerances = queryParams.intolerances.slice(0, -1);
-        console.log("Removed Dairy Intolerance");
-
-    }else{
-
-        queryParams.intolerances += (queryParams.intolerances ? "," : "") + "Dairy";
-        console.log("Added Dairy Intolerance");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("peanutButton").addEventListener("click", function(){
-    if(queryParams.intolerances.includes("Peanut")){
-        queryParams.intolerances = queryParams.intolerances.replace("Peanut", "").replace(/,,/g, ",").trim();
-        if (queryParams.intolerances.endsWith(",")) queryParams.intolerances = queryParams.intolerances.slice(0, -1);
-        console.log("Removed Peanut Intolerance");
-
-    }else{
-
-        queryParams.intolerances += (queryParams.intolerances ? "," : "") + "Peanut";
-        console.log("Added Peanut Intolerance");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-document.getElementById("wheatButton").addEventListener("click", function(){
-    if(queryParams.intolerances.includes("Wheat")){
-        queryParams.intolerances = queryParams.intolerances.replace("Wheat", "").replace(/,,/g, ",").trim();
-        if (queryParams.intolerances.endsWith(",")) queryParams.intolerances = queryParams.intolerances.slice(0, -1);
-        console.log("Removed Wheat Intolerance");
-
-    }else{
-
-        queryParams.intolerances += (queryParams.intolerances ? "," : "") + "Wheat";
-        console.log("Added Wheat Intolerance");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-document.getElementById("soyButton").addEventListener("click", function(){
-    if(queryParams.intolerances.includes("Soy")){
-        queryParams.intolerances = queryParams.intolerances.replace("Soy", "").replace(/,,/g, ",").trim();
-        if (queryParams.intolerances.endsWith(",")) queryParams.intolerances = queryParams.intolerances.slice(0, -1);
-        console.log("Removed Soy Intolerance");
-
-    }else{
-
-        queryParams.intolerances += (queryParams.intolerances ? "," : "") + "Soy";
-        console.log("Added Soy Intolerance");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-document.getElementById("eggButton").addEventListener("click", function(){
-    if(queryParams.intolerances.includes("Egg")){
-        queryParams.intolerances = queryParams.intolerances.replace("Egg", "").replace(/,,/g, ",").trim();
-        if (queryParams.intolerances.endsWith(",")) queryParams.intolerances = queryParams.intolerances.slice(0, -1);
-        console.log("Removed Egg Intolerance");
-
-    }else{
-
-        queryParams.intolerances += (queryParams.intolerances ? "," : "") + "Egg";
-        console.log("Added Egg Intolerance");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-
-//TYPES OF DISHES!!!!!!!!!
-document.getElementById("mainButton").addEventListener("click", function(){
-    if(queryParams.type === "Main Course"){
-
-        queryParams.type = "";
-        console.log("Removed Main Course");
-    }else{
-        queryParams.type = "Main Course";
-        console.log("Added Main Course");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("sideButton").addEventListener("click", function(){
-    if(queryParams.type === "Side Dish"){
-
-        queryParams.type = "";
-        console.log("Removed Side Dish");
-    }else{
-        queryParams.type = "Side Dish";
-        console.log("Added Side Dish");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("dessertButton").addEventListener("click", function(){
-    if(queryParams.type === "Dessert"){
-
-        queryParams.type = "";
-        console.log("Removed Dessert");
-    }else{
-        queryParams.type = "Dessert";
-        console.log("Added Dessert");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("breakfastButton").addEventListener("click", function(){
-    if(queryParams.type === "Breakfast"){
-
-        queryParams.type = "";
-        console.log("Removed Breakfast");
-    }else{
-        queryParams.type = "Breakfast";
-        console.log("Added Breakfast");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("appetizerButton").addEventListener("click", function(){
-    if(queryParams.type === "Appetizer"){
-
-        queryParams.type = "";
-        console.log("Removed Appetizer");
-    }else{
-        queryParams.type = "Appetizer";
-        console.log("Added Appetizer");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-document.getElementById("soupButton").addEventListener("click", function(){
-    if(queryParams.type === "Soup"){
-
-        queryParams.type = "";
-        console.log("Removed Soup");
-    }else{
-        queryParams.type = "Soup";
-        console.log("Added Soup");
-    }
-    console.log("Current queryParams:", queryParams);
-    fetchRecipes();
-});
-
-//CALORIES AND SERVINGS!!!!!!!
-document.getElementById("minCaloriesSubmit").addEventListener("click", function(){
-
-    const minCalories = document.getElementById("minCalories").value;
-    if(minCalories){
-
-        queryParams.minCalories = minCalories;
-        console.log(`Set Min Calories to ${minCalories}`);
-        console.log("Current queryParams:", queryParams);
-        fetchRecipes();
-
-    }else{
-
-        console.log("Min Calories input is empty");
-    }
-});
-
-document.getElementById("maxCaloriesSubmit").addEventListener("click", function(){
-
-    const maxCalories = document.getElementById("maxCalories").value;
-    if(maxCalories){
-
-        queryParams.maxCalories = maxCalories;
-        console.log(`Set Max Calories to ${maxCalories}`);
-        console.log("Current queryParams:", queryParams);
-        fetchRecipes();
-
-    }else{
-
-        console.log("Max Calories input is empty");
-    }
-});
-
-document.getElementById("minServingsSubmit").addEventListener("click", function(){
-
-    const minServings = document.getElementById("minServings").value;
-    if(minServings){
-
-        queryParams.minServings = minServings;
-        console.log(`Set Min Servings to ${minServings}`);
-        console.log("Current queryParams:", queryParams);
-        fetchRecipes();
-
-    }else{
-
-        console.log("Min Servings input is empty");
-    }
-});
-document.getElementById("maxServingsSubmit").addEventListener("click", function(){
-
-    const maxServings = document.getElementById("maxServings").value;
-    if(maxServings){
-
-        queryParams.maxServings = maxServings;
-        console.log(`Set Max Servings to ${maxServings}`);
-        console.log("Current queryParams:", queryParams);
-        fetchRecipes();
-
-    }else{
-
-        console.log("Max Servings input is empty");
-    }
-});
-
-async function fetchRecipes(query) {
+  };
+  
+  // ----------------- FETCH RECIPES FUNCTION -----------------
+  
+  async function fetchRecipes() {
     const apiKey = '75c14d686cb74a4ea9f5072008adb97f';
-    const url = `https://api.spoonacular.com/recipes/complexSearch?` + 
-    `cuisine=${encodeURIComponent(queryParams.cuisine)}` +
-    `&diet=${encodeURIComponent(queryParams.diet)}` +
-    `&intolerances=${encodeURIComponent(queryParams.intolerances)}` +
-    `&addRecipeInformation=true&apiKey=${apiKey}`;
-    
+    const url = `https://api.spoonacular.com/recipes/complexSearch?` +
+      `cuisine=${encodeURIComponent(queryParams.cuisine)}` +
+      `&diet=${encodeURIComponent(queryParams.diet)}` +
+      `&intolerances=${encodeURIComponent(queryParams.intolerances)}` +
+      `&addRecipeInformation=true&apiKey=${apiKey}`;
+      
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -386,131 +27,326 @@ async function fetchRecipes(query) {
       }
       const data = await response.json();
       console.log('Recipes:', data);
-      console.log(data);
-      document.getElementById("pasta").innerHTML = `
-        <h2>Recipes for ${query}</h2>
-        
+      
+      const suggestionPage = document.getElementById("suggestionPage");
+      suggestionPage.innerHTML = `
+        <h2>Recipes Based on Your Preferences</h2>
         <ul>
-          ${data.results.map(recipe => `
-            <li>
-              <strong>${recipe.title}</strong> - Cuisine: ${recipe.cuisines.join(', ') || 'Unspecified'}
-            </li>
-          `).join('')}
+          ${data.results.map(recipe => {
+            const cuisines = recipe.cuisines && recipe.cuisines.length > 0 
+              ? recipe.cuisines.join(', ')
+              : 'Unspecified';
+            return `
+              <li>
+                <strong>${recipe.title}</strong> - Cuisine: ${cuisines}
+              </li>
+            `;
+          }).join('')}
         </ul>
-        `;
+      `;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }
   
-  function cuisineSelect(selectedOptionId) {
-    const options = document.querySelectorAll(".cuisineOption");
-    const selectedOption = document.getElementById(selectedOptionId);
-
-    if (selectedOption) {
-        // Reset all options to "false"
-        options.forEach(option => {
-            option.setAttribute("data-selected", "false");
-            option.style.backgroundColor = "#fff"; // Reset background color
-            option.style.color = "#000"; // Reset text color
-        });
-
-        // Set the clicked option to "true"
-        selectedOption.setAttribute("data-selected", "true");
-        selectedOption.style.backgroundColor = "#588157"; // Highlight selected option
-        selectedOption.style.color = "#fff"; // Change text color for selected option
+  // ----------------- CUISINE SECTION (ONLY ONE SELECTED) -----------------
+  
+  const cuisines = ["Asian", "American", "European", "Italian", "Mexican", "Southern"];
+  
+  function updateCuisineUI(selectedCuisine) {
+    cuisines.forEach(cuisine => {
+      const btn = document.getElementById(cuisine.toLowerCase() + "Button");
+      if (btn) {
+        if (selectedCuisine === cuisine) {
+          btn.classList.add("active");
+          btn.setAttribute("data-selected", "true");
+        } else {
+          btn.classList.remove("active");
+          btn.setAttribute("data-selected", "false");
+        }
+      }
+    });
+  }
+  
+  function handleCuisineButtonClick(cuisineName) {
+    if (queryParams.cuisine === cuisineName) {
+      queryParams.cuisine = "";
+      console.log(`Removed ${cuisineName} Cuisine`);
+    } else {
+      queryParams.cuisine = cuisineName;
+      console.log(`Added ${cuisineName} Cuisine`);
     }
-}
-
-
-document.addEventListener("DOMContentLoaded", function () {
+    updateCuisineUI(queryParams.cuisine);
+    console.log("Current queryParams:", queryParams);
+    fetchRecipes();
+  }
+  
+  // Attach event listeners for cuisine buttons
+  cuisines.forEach(cuisine => {
+    const btnId = cuisine.toLowerCase() + "Button";
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      btn.addEventListener("click", () => handleCuisineButtonClick(cuisine));
+    } else {
+      console.warn(`Button with ID "${btnId}" not found.`);
+    }
+  });
+  
+  // ----------------- DIETARY SECTION (MULTIPLE SELECTIONS) -----------------
+  
+  const diets = ["Vegetarian", "Vegan", "Pescetarian", "Paleo"];
+  
+  function updateDietUI() {
+    diets.forEach(diet => {
+      const btn = document.getElementById(diet.toLowerCase() + "Button");
+      if (btn) {
+        // Check if the diet appears in the comma-separated string
+        if (queryParams.diet.split(',').map(d => d.trim()).includes(diet)) {
+          btn.classList.add("active");
+          btn.setAttribute("data-selected", "true");
+        } else {
+          btn.classList.remove("active");
+          btn.setAttribute("data-selected", "false");
+        }
+      }
+    });
+  }
+  
+  function handleDietButtonClick(dietName) {
+    // Convert current diet string to an array for easier manipulation
+    let dietArr = queryParams.diet ? queryParams.diet.split(',').map(d => d.trim()) : [];
+    
+    if (dietArr.includes(dietName)) {
+      dietArr = dietArr.filter(d => d !== dietName);
+      console.log(`Removed ${dietName} Diet`);
+    } else {
+      dietArr.push(dietName);
+      console.log(`Added ${dietName} Diet`);
+    }
+    queryParams.diet = dietArr.join(',');
+    updateDietUI();
+    console.log("Current queryParams:", queryParams);
+    fetchRecipes();
+  }
+  
+  // Attach event listeners for diet buttons
+  diets.forEach(diet => {
+    const btnId = diet.toLowerCase() + "Button";
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      btn.addEventListener("click", () => handleDietButtonClick(diet));
+    } else {
+      console.warn(`Diet button with ID "${btnId}" not found.`);
+    }
+  });
+  
+  // ----------------- INTOLERANCES SECTION (MULTIPLE SELECTIONS) -----------------
+  
+  const intolerancesList = ["Dairy", "Peanut", "Gluten", "Wheat", "Soy", "Egg"];
+  
+  function updateIntolerancesUI() {
+    intolerancesList.forEach(item => {
+      const btn = document.getElementById(item.toLowerCase() + "Button");
+      if (btn) {
+        if (queryParams.intolerances.split(',').map(t => t.trim()).includes(item)) {
+          btn.classList.add("active");
+          btn.setAttribute("data-selected", "true");
+        } else {
+          btn.classList.remove("active");
+          btn.setAttribute("data-selected", "false");
+        }
+      }
+    });
+  }
+  
+  function handleIntoleranceButtonClick(itemName) {
+    let intoleranceArr = queryParams.intolerances ? queryParams.intolerances.split(',').map(t => t.trim()) : [];
+    
+    if (intoleranceArr.includes(itemName)) {
+      intoleranceArr = intoleranceArr.filter(t => t !== itemName);
+      console.log(`Removed ${itemName} Intolerance`);
+    } else {
+      intoleranceArr.push(itemName);
+      console.log(`Added ${itemName} Intolerance`);
+    }
+    queryParams.intolerances = intoleranceArr.join(',');
+    updateIntolerancesUI();
+    console.log("Current queryParams:", queryParams);
+    fetchRecipes();
+  }
+  
+  // Attach event listeners for intolerance buttons
+  intolerancesList.forEach(item => {
+    const btnId = item.toLowerCase() + "Button";
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      btn.addEventListener("click", () => handleIntoleranceButtonClick(item));
+    } else {
+      console.warn(`Intolerance button with ID "${btnId}" not found.`);
+    }
+  });
+  
+  // ----------------- MEAL TYPE SECTION (ONLY ONE SELECTED) -----------------
+  
+  const mealTypes = ["Breakfast", "Main Course", "Side Dish", "Dessert", "Appetizer", "Soup"];
+  
+  function updateMealTypeUI(selectedType) {
+    mealTypes.forEach(type => {
+      const btnId = type.toLowerCase().replace(/ /g, "") + "Button"; 
+      // e.g., "Main Course" becomes "maincourseButton"
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        if (selectedType === type) {
+          btn.classList.add("active");
+          btn.setAttribute("data-selected", "true");
+        } else {
+          btn.classList.remove("active");
+          btn.setAttribute("data-selected", "false");
+        }
+      }
+    });
+  }
+  
+  function handleMealTypeButtonClick(typeName) {
+    if (queryParams.type === typeName) {
+      queryParams.type = "";
+      console.log(`Removed ${typeName}`);
+    } else {
+      queryParams.type = typeName;
+      console.log(`Added ${typeName}`);
+    }
+    updateMealTypeUI(queryParams.type);
+    console.log("Current queryParams:", queryParams);
+    fetchRecipes();
+  }
+  
+  // Attach event listeners for meal type buttons
+  mealTypes.forEach(type => {
+    const btnId = type.toLowerCase().replace(/ /g, "") + "Button";
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      btn.addEventListener("click", () => handleMealTypeButtonClick(type));
+    } else {
+      console.warn(`Meal type button with ID "${btnId}" not found.`);
+    }
+  });
+  
+  // ----------------- NUMERIC INPUTS FOR CALORIES AND SERVINGS -----------------
+  
+  // Assuming you have buttons with these IDs in your HTML
+  document.getElementById("minCaloriesSubmit")?.addEventListener("click", function() {
+    const value = document.getElementById("minCalorie").value;
+    if (value) {
+      queryParams.minCalories = value;
+      console.log(`Set Min Calories to ${value}`);
+      fetchRecipes();
+    } else {
+      console.log("Min Calories input is empty");
+    }
+  });
+  
+  document.getElementById("maxCaloriesSubmit")?.addEventListener("click", function() {
+    const value = document.getElementById("maxCalorie").value;
+    if (value) {
+      queryParams.maxCalories = value;
+      console.log(`Set Max Calories to ${value}`);
+      fetchRecipes();
+    } else {
+      console.log("Max Calories input is empty");
+    }
+  });
+  
+  document.getElementById("minServingsSubmit")?.addEventListener("click", function() {
+    const value = document.getElementById("minServingSize").value;
+    if (value) {
+      queryParams.minServings = value;
+      console.log(`Set Min Servings to ${value}`);
+      fetchRecipes();
+    } else {
+      console.log("Min Servings input is empty");
+    }
+  });
+  
+  document.getElementById("maxServingsSubmit")?.addEventListener("click", function() {
+    const value = document.getElementById("maxServingSize").value;
+    if (value) {
+      queryParams.maxServings = value;
+      console.log(`Set Max Servings to ${value}`);
+      fetchRecipes();
+    } else {
+      console.log("Max Servings input is empty");
+    }
+  });
+  
+  // ----------------- DROPDOWN TOGGLING AND PAGE NAVIGATION -----------------
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    function setupToggle(toggleId, optionsId) {
+      const toggle = document.getElementById(toggleId);
+      const options = document.getElementById(optionsId);
+      toggle.addEventListener("change", function () {
+        if (toggle.checked) {
+          options.classList.remove("hidden");
+          options.style.display = "block";
+          options.style.animation = "fadeDown 0.5s ease-out";
+        } else {
+          options.style.animation = "fadeUp 0.5s ease-out";
+          setTimeout(() => {
+            options.style.display = "none";
+            options.classList.add("hidden");
+          }, 300);
+        }
+      });
+      // Initialize options visibility
+      if (toggle.checked) {
+        options.style.display = "block";
+      } else {
+        options.style.display = "none";
+        options.classList.add("hidden");
+      }
+    }
+  
+    setupToggle("cuisineToggle", "cuisineOptions");
+    setupToggle("dietaryToggle", "dietaryOptions");
+    setupToggle("intolerancesToggle", "intolerancesOptions");
+    setupToggle("typeToggle", "typeOptions");
+  
+    // Page navigation (assuming the HTML contains the page select buttons)
     const preferencePage = document.getElementById("preferencePage");
     const suggestionPage = document.getElementById("suggestionPage");
     const preferenceButton = document.getElementById("preferencePageButton");
     const suggestionButton = document.getElementById("suggestionPageButton");
-
-    function showPage(page) {
-        if (page === "preference") {
-            preferencePage.style.display = "block";
-            suggestionPage.style.display = "none";
-        } else if (page === "suggestion") {
-            preferencePage.style.display = "none";
-            suggestionPage.style.display = "block";
-        }
-    }
-
     const pageButtons = document.querySelectorAll(".pageSelectButton");
     const pageSelection = document.querySelector(".pageSelection");
-
-
-    function setActivePageButton(activeButton) {
-        pageButtons.forEach(button => button.classList.remove("active"));
-        activeButton.classList.add("active");
-
-        // Highlight the pageSelection container
-        pageSelection.classList.add("active");
+  
+    function showPage(page) {
+      if (page === "preference") {
+        preferencePage.style.display = "block";
+        suggestionPage.style.display = "none";
+      } else if (page === "suggestion") {
+        preferencePage.style.display = "none";
+        suggestionPage.style.display = "block";
+      }
     }
-
+    
+    function setActivePageButton(activeButton) {
+      pageButtons.forEach(button => button.classList.remove("active"));
+      activeButton.classList.add("active");
+      pageSelection.classList.add("active");
+    }
+  
     preferenceButton.addEventListener("click", function () {
-        showPage("preference");
-        setActivePageButton(preferenceButton);
+      showPage("preference");
+      setActivePageButton(preferenceButton);
     });
-
+  
     suggestionButton.addEventListener("click", function () {
-        showPage("suggestion");
-        setActivePageButton(suggestionButton);
+      showPage("suggestion");
+      setActivePageButton(suggestionButton);
     });
-
+  
     // Set initial page view
     showPage("preference");
-
-    // Set initial active button and highlight
     setActivePageButton(preferenceButton);
-
-    function setupToggle(toggleId, optionsId) {
-        const toggle = document.getElementById(toggleId);
-        const options = document.getElementById(optionsId);
-
-        toggle.addEventListener("change", function () {
-            if (toggle.checked) {
-                options.classList.remove("hidden");
-                options.style.display = "block";
-                options.style.animation = "fadeDown 0.5s ease-out"; // Apply fade-down animation
-            } else {
-                options.style.animation = "fadeUp 0.5s ease-out"; // Apply fade-up animation
-                setTimeout(() => {
-                    options.style.display = "none";
-                    options.classList.add("hidden");
-                }, 300); // Wait for the animation to complete
-            }
-        });
-
-        // Initialize options visibility
-        if (toggle.checked) {
-            options.style.display = "block";
-        } else {
-            options.style.display = "none";
-            options.classList.add("hidden");
-        }
-    }
-
-    setupToggle("cuisineToggle", "cusisineOptions");
-    setupToggle("dietaryToggle", "dietaryOptions");
-    setupToggle("intolerancesToggle", "intolerancesOptions");
-    setupToggle("typeToggle", "typeOptions");
-
-    document.querySelectorAll('.optionSelect').forEach(button => {
-        button.addEventListener('click', () => {
-            const isSelected = button.getAttribute('data-selected') === 'true';
-            button.setAttribute('data-selected', !isSelected);
-        });
-    });
-
-    document.querySelectorAll('.cuisineOption').forEach(button => {
-        button.addEventListener('click', () => {
-            const isSelected = button.getAttribute('data-selected') === 'true';
-            button.setAttribute('data-selected', !isSelected);
-        });
-    });
-});
-
+  });
+  
