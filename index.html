@@ -5,13 +5,19 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Recipes</title>
 
-  <link rel="stylesheet" href="style.css">
   <!-- Use defer so the DOM is ready for JS -->
   <script src="spoon.js" defer></script>
 
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <style>
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: 'Signika Negative', sans-serif;
+    }
+    </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header id="header">
@@ -95,6 +101,8 @@
           <input type="text" id="maxCalorie" class="textInput">
         </div>
       </div>
+          <!-- Other preference options (cuisine, diet, etc.) -->
+        <button id="submitButton" class="optionSelect">Submit</button>
     </section>
 
     <section id="suggestionPage" class="page">

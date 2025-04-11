@@ -13,7 +13,7 @@ let queryParams = {
   // ----------------- FETCH RECIPES FUNCTION -----------------
   
   async function fetchRecipes() {
-    const apiKey = '75c14d686cb74a4ea9f5072008adb97f';
+    const apiKey = '82caed26afe2467ca4813a20339b7a80';
     const url = `https://api.spoonacular.com/recipes/complexSearch?` +
       `cuisine=${encodeURIComponent(queryParams.cuisine)}` +
       `&diet=${encodeURIComponent(queryParams.diet)}` +
@@ -28,26 +28,53 @@ let queryParams = {
       const data = await response.json();
       console.log('Recipes:', data);
       
-      const suggestionPage = document.getElementById("suggestionPage");
-      suggestionPage.innerHTML = `
-        <h2>Recipes Based on Your Preferences</h2>
-        <ul>
-          ${data.results.map(recipe => {
-            const cuisines = recipe.cuisines && recipe.cuisines.length > 0 
-              ? recipe.cuisines.join(', ')
-              : 'Unspecified';
-            return `
-              <li>
-                <strong>${recipe.title}</strong> - Cuisine: ${cuisines}
-              </li>
-            `;
-          }).join('')}
-        </ul>
-      `;
+      const apiResultDiv = document.getElementById('suggestionPage');
+        apiResultDiv.innerHTML = '';
+
+        for (const recipe of data.results) {
+
+            // Create a card for each recipe
+            const card = document.createElement('div');
+            card.className = 'w3-card-4 w3-margin w3-padding w3-hover-shadow recipeCard';
+
+            const img = document.createElement('img');
+            img.src = recipe.image;
+            img.alt = recipe.title;
+            img.style.width = '100%';
+
+            const title = document.createElement('h2');
+            title.innerHTML = `<a href='recipe.html?id=${recipe.id}'>${recipe.title}</a>`; // Pass ID via URL
+            
+            const time = document.createElement('p');
+            time.innerText = `Ready in ${recipe.readyInMinutes} minutes`;
+
+            const cuisine = document.createElement('p');
+            cuisine.className = 'w3-small recipeInfo'
+            cuisine.innerHTML = recipe.cuisines.map(c => `<span class="w3-tag w3-light-grey">${c}</span>`).join(' ');
+
+            const diets = document.createElement('p');
+            diets.className = 'w3-small recipeInfo'
+            diets.innerHTML = recipe.diets.map(d => `<span class="w3-tag w3-light-blue">${d}</span>`).join(' ');
+
+            const servings = document.createElement('p');
+            servings.className = 'w3-small recipeInfo'
+            servings.innerHTML = `Servings: ${recipe.servings}`;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(cuisine);
+            card.appendChild(diets);
+            card.appendChild(time);
+            card.appendChild(servings);
+            
+
+            // Append the card to the main container
+            apiResultDiv.appendChild(card);
+        }
     } catch (error) {
-      console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error);
     }
-  }
+}
   
   // ----------------- CUISINE SECTION (ONLY ONE SELECTED) -----------------
   
@@ -78,7 +105,6 @@ let queryParams = {
     }
     updateCuisineUI(queryParams.cuisine);
     console.log("Current queryParams:", queryParams);
-    fetchRecipes();
   }
   
   // Attach event listeners for cuisine buttons
@@ -126,7 +152,6 @@ let queryParams = {
     queryParams.diet = dietArr.join(',');
     updateDietUI();
     console.log("Current queryParams:", queryParams);
-    fetchRecipes();
   }
   
   // Attach event listeners for diet buttons
@@ -172,7 +197,6 @@ let queryParams = {
     queryParams.intolerances = intoleranceArr.join(',');
     updateIntolerancesUI();
     console.log("Current queryParams:", queryParams);
-    fetchRecipes();
   }
   
   // Attach event listeners for intolerance buttons
@@ -217,7 +241,6 @@ let queryParams = {
     }
     updateMealTypeUI(queryParams.type);
     console.log("Current queryParams:", queryParams);
-    fetchRecipes();
   }
   
   // Attach event listeners for meal type buttons
@@ -230,6 +253,27 @@ let queryParams = {
       console.warn(`Meal type button with ID "${btnId}" not found.`);
     }
   });
+
+  // ----------------- SUBMIT BUTTON HANDLER -----------------
+document.getElementById("submitButton").addEventListener("click", function () {
+    console.log("Submitting query with params:", queryParams);
+    fetchRecipes();
+    // Automatically navigate to the suggestionPage
+    const preferencePage = document.getElementById("preferencePage");
+    const suggestionPage = document.getElementById("suggestionPage");
+
+    // Hide the preferencePage and show the suggestionPage
+    preferencePage.style.display = "none";
+    suggestionPage.style.display = "block";
+
+    // Optionally, update the active button styling
+    const preferenceButton = document.getElementById("preferencePageButton");
+    const suggestionButton = document.getElementById("suggestionPageButton");
+    if (preferenceButton && suggestionButton) {
+        preferenceButton.classList.remove("active");
+        suggestionButton.classList.add("active");
+    }
+});
   
   // ----------------- NUMERIC INPUTS FOR CALORIES AND SERVINGS -----------------
   
@@ -239,7 +283,6 @@ let queryParams = {
     if (value) {
       queryParams.minCalories = value;
       console.log(`Set Min Calories to ${value}`);
-      fetchRecipes();
     } else {
       console.log("Min Calories input is empty");
     }
@@ -250,7 +293,6 @@ let queryParams = {
     if (value) {
       queryParams.maxCalories = value;
       console.log(`Set Max Calories to ${value}`);
-      fetchRecipes();
     } else {
       console.log("Max Calories input is empty");
     }
@@ -261,7 +303,6 @@ let queryParams = {
     if (value) {
       queryParams.minServings = value;
       console.log(`Set Min Servings to ${value}`);
-      fetchRecipes();
     } else {
       console.log("Min Servings input is empty");
     }
@@ -272,7 +313,6 @@ let queryParams = {
     if (value) {
       queryParams.maxServings = value;
       console.log(`Set Max Servings to ${value}`);
-      fetchRecipes();
     } else {
       console.log("Max Servings input is empty");
     }
@@ -349,4 +389,6 @@ let queryParams = {
     showPage("preference");
     setActivePageButton(preferenceButton);
   });
+
+  
   

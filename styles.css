@@ -1,0 +1,350 @@
+/* Color palette */
+#fff
+#a3b18a
+#3a5a40
+
+body {
+    margin: 0;
+    font-family: 'Signika Negative', sans-serif !important; 
+    background-color: #dda15e;
+    height: 100%;
+    z-index: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    background-color: #dda15e;
+    margin: 0;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    height: 100%; /* Use full viewport height */
+    overflow-y: auto; /* Enable scrolling within the app */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    display: flex;
+    flex-direction: column;
+
+    font-weight: bold;
+
+    z-index: 10;
+}
+
+#header {
+    height: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 10px;
+
+    position: fixed;
+    display: flex;  
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+
+    background-color: #fff;
+
+    z-index: 1000;
+}
+
+/* Bottom page selector */
+
+.pageSelection {
+    background-color: #fff;
+    color: #fff;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    gap: 80px;
+    padding: 10px 0;
+    height: 35px;
+}
+
+.pageSelection button {
+    border: none;
+    background: none;
+}
+
+.pageSelection img {
+    width: 40px;;
+}
+
+.pageSelection button.active img {
+    border-top: 3px solid #588157;
+}
+
+/* Cusine styles */
+
+#cuisineToggleLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    background-color: #fff;
+
+    padding: 10px;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#cusisineOptions {
+    margin: 10px 10px 0 10px;
+    background-color: #fff;
+    padding-bottom: 30px;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Dietary styles */
+
+#dietaryToggleLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#dietaryOptions {
+    margin: 10px 10px 0 10px;
+    background-color: #fff;
+    padding-bottom: 30px;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Intolerance styles */
+
+#intolerancesToggleLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#intolerancesOptions {
+    margin: 10px 10px 0 10px;
+    background-color: #fff;
+    padding-bottom: 30px;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Type styles */
+
+#typeToggleLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#typeOptions {
+    margin: 10px 10px 0 10px;
+    background-color: #fff;
+    padding-bottom: 30px;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Serving Size styles */
+#servingSize {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+
+    padding-left: 10px;
+    background-color: #fff;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#servingSizeInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Calorie styles */
+#calorieCount {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+
+    padding-left: 10px;
+    background-color: #fff;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#calorieInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*  selection styles */
+
+.optionSelect {
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    border-radius: 2cap;
+    border: none;
+    background-color: #fff;
+    color: #000;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    padding: 10px;
+    min-width:60px;
+}
+
+.optionSelect[data-selected="true"] {
+    background-color: #588157;
+    color: white;
+    border-color: white;
+}
+
+.cuisineOption {
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    border-radius: 2cap;
+    border: none;
+    background-color: #fff;
+    color: #000;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    padding: 10px;
+    min-width:60px;
+}
+
+.cuisineOption[data-selected="true"] {
+    background-color: #588157;
+    color: white;
+    border-color: white;
+}
+
+.cuisineOption[data-selected="false"] {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Toggle Style */
+
+.toggle {
+    display: none;
+}
+
+.chevron {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: solid #588157;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.toggle:checked + .chevron {
+    transform: rotate(405deg); /* 360 + 45 degrees */
+}
+
+.textInput {
+    background-color: #588157;
+    color: #fff;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 6px;
+    border: none;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 10px;
+    width: 40px;
+    height: 20px;
+    
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.recipeCard {
+    background-color: #fff;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.cuisine-Dropdown, .dietary-Dropdown, .intolerances-Dropdown {
+    animation: fadeDown 0.8s ease-out;
+}
+
+.cuisine-Dropdown.hidden, .dietary-Dropdown.hidden, .intolerances-Dropdown.hidden {
+    animation: fadeUp 0.8s ease-out;
+}
