@@ -7,17 +7,11 @@
 
   <!-- Use defer so the DOM is ready for JS -->
   <script src="spoon.js" defer></script>
-
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-  <style>
-    body, h1, h2, h3, h4, h5, h6 {
-      font-family: 'Signika Negative', sans-serif;
-    }
-    </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="recipeList.css">
 </head>
 <body>
   <header id="header">
@@ -83,26 +77,26 @@
       <div id="servingSize">
         <div class="servingSizeInput">
           <h2>Min Serving Size</h2>
-          <input type="text" id="minServingSize" class="textInput">
+          <input type="number" id="minServingSize" class="textInput" name="minServingSize" min="1" max="8" value="1">
         </div>
         <div class="servingSizeInput">
           <h2>Max Serving Size</h2>
-          <input type="text" id="maxServingSize" class="textInput">
+          <input type="number" id="maxServingSize" class="textInput" name="maxServingSize" min="1" max="8" value="8">
         </div>
       </div>
 
-      <div id="calorieCount">
+      <div id="calorieRange">
         <div class="calorieInput">
-          <h2>Min Calorie Count</h2>
-          <input type="text" id="minCalorie" class="textInput">
+          <h2>Min Calories</h2>
+          <input type="number" id="minCalories" class="textInput" name="minCalories" min="50" max="800" value="50">
         </div>
         <div class="calorieInput">
-          <h2>Max Calorie Count</h2>
-          <input type="text" id="maxCalorie" class="textInput">
+          <h2>Max Calories</h2>
+          <input type="number" id="maxCalories" class="textInput" name="maxCalories" min="50" max="800" value="800">
         </div>
       </div>
-          <!-- Other preference options (cuisine, diet, etc.) -->
-        <button id="submitButton" class="optionSelect">Submit</button>
+
+      <button id="submitButton" class="submit">Submit</button>
     </section>
 
     <section id="suggestionPage" class="page">
@@ -113,7 +107,6 @@
   <nav id="pageSelect" class="pageSelection">
     <button id="preferencePageButton" class="pageSelectButton"><img src="assets/bitmap.png" alt="Preferences"/></button>
     <button id="suggestionPageButton" class="pageSelectButton"><img src="assets/cookIcon.png" alt="Suggestions"/></button>
-    <button id="profilePageButton" class="pageSelectButton"><img src="assets/profileIcon.png" alt="Profile"/></button>
   </nav>
 </body>
 </html>

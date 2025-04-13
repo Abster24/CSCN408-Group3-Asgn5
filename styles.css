@@ -3,6 +3,18 @@
 #a3b18a
 #3a5a40
 
+/* Hide arrows for all browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 body {
     margin: 0;
     font-family: 'Signika Negative', sans-serif !important; 
@@ -38,7 +50,10 @@ html, body {
     top: 0;
     left: 0;
     right: 0;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+
+    border-bottom-left-radius: 2cap;
+    border-bottom-right-radius: 2cap;
 
     position: fixed;
     display: flex;  
@@ -66,6 +81,9 @@ html, body {
     gap: 80px;
     padding: 10px 0;
     height: 35px;
+
+    border-top-right-radius: 2cap;
+    border-top-left-radius: 2cap;
 }
 
 .pageSelection button {
@@ -98,7 +116,7 @@ html, body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#cusisineOptions {
+#cuisineOptions {
     margin: 10px 10px 0 10px;
     background-color: #fff;
     padding-bottom: 30px;
@@ -185,22 +203,62 @@ html, body {
 #servingSize {
     display: flex;
     flex-direction: column;
-    cursor: pointer;
     margin-top: 30px;
     margin-left: 10px;
     margin-right: 10px;
-    font-size: 15px;
-
+    font-size: 14px;
     padding-left: 10px;
     background-color: #fff;
     border-radius: 2cap;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#servingSizeInput {
+.servingSizeInput {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.servingSizeInput h2 {
+    margin: 0; 
+    flex: 1;
+}
+
+.servingSizeInput input {
+    flex: 0;
+    margin-left: 10px;
+}
+
+/* Calorie Count styles */
+#calorieRange {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    padding-left: 10px;
+    background-color: #fff;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.calorieInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.calorieInput h2 {
+    margin: 0; 
+    flex: 1;
+}
+
+.calorieInput input {
+    flex: 0;
+    margin-left: 10px;
 }
 
 /* Calorie styles */
@@ -226,6 +284,25 @@ html, body {
 }
 
 /*  selection styles */
+
+.submit {
+    background-color: #FFF;
+    color: #000;
+    border-radius: 2cap;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    border: none;
+    display: block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 60%;
+    text-align: center;
+    
+    
+    font-size: 15px;
+    font-weight: bold;
+}
 
 .optionSelect {
     margin-top: 30px;
@@ -308,13 +385,11 @@ html, body {
     display: inline-block;
     margin-left: auto;
     margin-right: 10px;
-    width: 40px;
-    height: 20px;
     
     font-size: 15px;
     font-weight: bold;
+    text-align: center;
 }
-
 .recipeCard {
     background-color: #fff;
 }
